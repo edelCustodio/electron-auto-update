@@ -1,0 +1,22 @@
+{
+  "name": "autoupdate",
+  "version": "1.0.0",
+  "description": "Works with electron auto update",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Edel Custodio",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": " https://github.com/edelCustodio/electron-auto-update.git"
+  },
+  "devDependencies": {
+    "electron": "4.0.6"
+  },
+  "dependencies": {
+    "update-electron-app": "1.3.0"
+  }
+}
