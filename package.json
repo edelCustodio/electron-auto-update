@@ -1,7 +1,10 @@
 {
   "name": "autoupdate",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Works with electron auto update",
+  "author": "Edel Custodio",
+  "license": "MIT",
+  "repository": "https://github.com/edelCustodio/electron-auto-update",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
@@ -9,11 +12,8 @@
     "pack": "electron-builder --dir",
     "dist": "electron-builder",
     "postinstall": "electron-builder install-app-deps",
-    "publish": "node_modules/.bin/build --win -p always"
+    "publish": "build --win -p always"
   },
-  "author": "Edel Custodio",
-  "license": "MIT",
-  "repository": "git@github.com:edelCustodio/electron-auto-update.git",
   "build": {
     "appId": "com.friasoftit.electron-auto-update",
     "productName": "Electron Auto Update",
@@ -25,7 +25,9 @@
       }
     ],
     "win": {
-      "publish": ["github"],
+      "publish": [
+        "github"
+      ],
       "target": [
         {
           "target": "nsis",
@@ -40,10 +42,13 @@
   "devDependencies": {
     "electron": "4.0.6",
     "electron-builder": "20.38.5",
-    "electron-rebuild": "1.8.4"
+    "electron-packager": "13.1.1",
+    "electron-winstaller": "3.0.4",
+    "rimraf": "2.6.3"
   },
   "dependencies": {
     "dotenv": "6.2.0",
-    "electron-log": "3.0.1"
+    "electron-log": "3.0.1",
+    "electron-updater": "4.0.6"
   }
 }

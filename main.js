@@ -2,18 +2,19 @@ const { app, BrowserWindow } = require('electron');
 const { autoUpdater } = require("electron-updater");
 const log = require('electron-log');
 const dotenv  = require('dotenv');
+const electronInstaller = require('electron-winstaller');
 
 dotenv.config();
 
 autoUpdater.logger = log;
 autoUpdater.logger.transports.file.level = 'info';
 
+let win;
+
 
 function createWindow() {
-    //check for updates
-    autoUpdater.checkForUpdatesAndNotify();
     
-    let win = new BrowserWindow({ width: 800, height: 600 });
+    win = new BrowserWindow({ width: 800, height: 600 });
     win.loadFile('index.html');
 
     // Emitted when the window is closed.
@@ -23,6 +24,26 @@ function createWindow() {
         // when you should delete the corresponding element.
         win = null
     });
+
+    if (process.env.NODE_ENV !== 'development') {
+      // autoUpdater.setFeedURL({
+      //   provider: "github",
+      //   owner: "edelCustodio",
+      //   repo: "electron-auto-update",
+      //   token: "e472d93bbf9262e264858d4e2ce2797cea03a246"
+      // });
+      //check for updates
+      autoUpdater.checkForUpdates();
+    }
+    
+    // resultPromise = electronInstaller.createWindowsInstaller({
+    //   appDirectory: 'C:\\Users\\Edel Custodio Frias\\Documents\\Electron\\autoUpdate',
+    //   outputDirectory: 'C:\\Users\\Edel Custodio Frias\\Documents\\Electron\\autoUpdate\\installer',
+    //   authors: 'Edel Custodio',
+    //   exe: 'autoUpdate.exe'
+    // });
+
+    // resultPromise.then(() => console.log("It worked!"), (e) => console.log(`No dice: ${e.message}`));
 }
 
 app.on('ready', createWindow);
@@ -54,8 +75,8 @@ app.on('activate', () => {
  * @param {*} text Texto a enviar
  */
 function sendStatusToWindow(text) {
-    let title = mainWindow.getTitle();
-    mainWindow.setTitle(title + ": " + text);
+    let title = win.getTitle();
+    win.setTitle(title + ": " + text);
     log.info(text);
   }
   
