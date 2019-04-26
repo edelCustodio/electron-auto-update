@@ -1,6 +1,6 @@
 {
   "name": "autoupdate",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Works with electron auto update",
   "author": "Edel Custodio",
   "license": "MIT",

@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, dialog } = require('electron');
 const { autoUpdater } = require("electron-updater");
 const log = require('electron-log');
 const dotenv  = require('dotenv');
@@ -116,13 +116,13 @@ autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
   }
 
   dialog.showMessageBox(dialogOpts, (response) => {
-    if (response === 0) autoUpdater.quitAndInstall()
-  })
+    if (response === 0) autoUpdater.quitAndInstall();
+  });
 });
 
 autoUpdater.on('error', message => {
-  console.error('There was a problem updating the application')
-  console.error(message)
+  log.error('There was a problem updating the application');
+  log.error(message);
 });
   
   
