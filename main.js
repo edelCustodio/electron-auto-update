@@ -26,24 +26,8 @@ function createWindow() {
     });
 
     if (process.env.NODE_ENV !== 'development') {
-      // autoUpdater.setFeedURL({
-      //   provider: "github",
-      //   owner: "edelCustodio",
-      //   repo: "electron-auto-update",
-      //   token: "e472d93bbf9262e264858d4e2ce2797cea03a246"
-      // });
-      //check for updates
       autoUpdater.checkForUpdates();
     }
-    
-    // resultPromise = electronInstaller.createWindowsInstaller({
-    //   appDirectory: 'C:\\Users\\Edel Custodio Frias\\Documents\\Electron\\autoUpdate',
-    //   outputDirectory: 'C:\\Users\\Edel Custodio Frias\\Documents\\Electron\\autoUpdate\\installer',
-    //   authors: 'Edel Custodio',
-    //   exe: 'autoUpdate.exe'
-    // });
-
-    // resultPromise.then(() => console.log("It worked!"), (e) => console.log(`No dice: ${e.message}`));
 }
 
 app.on('ready', createWindow);
