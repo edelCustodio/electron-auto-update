@@ -102,17 +102,13 @@ autoUpdater.on('download-progress', (progressObj) => {
   sendStatusToWindow(log_message);
 });
 
-// autoUpdater.on('update-downloaded', (info) => {
-//   sendStatusToWindow('Update downloaded');
-// });
-
 autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
   const dialogOpts = {
     type: 'info',
-    buttons: ['Restart', 'Later'],
-    title: 'Application Update',
+    buttons: ['Reiniciar', 'Cancelar'],
+    title: 'Nueva version disponible.',
     message: process.platform === 'win32' ? releaseNotes : releaseName,
-    detail: 'A new version has been downloaded. Restart the application to apply the updates.'
+    detail: 'Una nueva version ha sido descargada. Reinicie la aplicación para aplicar la actualización.'
   }
 
   dialog.showMessageBox(dialogOpts, (response) => {
