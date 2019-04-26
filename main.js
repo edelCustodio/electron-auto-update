@@ -2,7 +2,6 @@ const { app, BrowserWindow } = require('electron');
 const { autoUpdater } = require("electron-updater");
 const log = require('electron-log');
 const dotenv  = require('dotenv');
-const electronInstaller = require('electron-winstaller');
 
 dotenv.config();
 
@@ -26,6 +25,14 @@ function createWindow() {
     });
 
     if (process.env.NODE_ENV !== 'development') {
+      autoUpdater.setFeedURL({
+        provider: 'github',
+        repo: 'electron-auto-update',
+        owner: 'edelCustodio',
+        private: true,
+        token: '0ab30e15e45571d2c177da65f14cf7b14f4423f7'
+      });
+
       autoUpdater.checkForUpdates();
     }
 }
